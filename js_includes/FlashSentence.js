@@ -14,9 +14,14 @@ jqueryWidget: {
     _init: function () {
         var self = this;
         self.cssPrefix = self.options._cssPrefix;
-
+	var firstime = true;
         var $loading;
         var doneLoading = false;
+                function hideM(p) { 
+                        if ($(document).ready) {
+                                $(p).hide();
+                        }    
+                }
         if (typeof(self.options.s) != "string") {
             if (self.options.s.audio) {
                 if (self.options.audioMessage) {
@@ -24,7 +29,7 @@ jqueryWidget: {
                     setTimeout(function () {
                         if (! doneLoading)
                             $loading.text(conf_loadingMessage);
-                    }, 250);
+                    }, 2500);
                 }
                 withSoundManager(completeInit);
             }
@@ -66,38 +71,54 @@ jqueryWidget: {
                 for (var i = 0; i < names.length; ++i)
                     sids.push(soundId++);
                 for (var i = 0; i < names.length; ++i)
-                    sm.createSound('sound' + sids[i], urls[i]);
+                    sm.createSound({id: 'sound' + sids[i], url: urls[i], autoLoad: true});
 
                 var nextSoundToPlayIndex = 0;
 
+		console.log(sids);
                 function hideSD() { if (self.sentenceDom) self.sentenceDom.hide(); }
+		function showM(m){
+			if ($(document).ready){
+				$(m).show();
+			}
+		}
                 if (self.options.audioTrigger == "click") {
                     self.sentenceDom.css('cursor', 'pointer');
                     self.sentenceDom.click(function () {
                         hideSD();
-                        sm.play('sound' + sids[nextSoundToPlayIndex++], { onfinish: fin });
-                    });
+			sm.stopAll();
+			if (firstime == false){
+				nextSoundToPlayIndex = 0;
+			}
+			firstime = false;	
+//			var p = document.getElementsByClassName("Message-Message Message-message");
+			sm.play('sound' + sids[nextSoundToPlayIndex++], { onfinish: fin});
+		    });
                 }
                 else { // Immediate
                     hideSD();
                     sm.play('sound' + sids[nextSoundToPlayIndex++], { onfinish: fin });
-                }
-
+               }
                 function fin() {
-                    if (nextSoundToPlayIndex >= names.length)
-                        setTimeout(function () { self.finishedCallback([[["Sentence (or sentence MD5)", self.sentenceMD5]]]); }, 200);
-                    else
-                        sm.play('sound' + sids[nextSoundToPlayIndex++], { onfinish: fin });
-                }
+                    if (nextSoundToPlayIndex >= names.length){
+                     	nextSoundToPlayIndex-=1;
+			var m = document.getElementsByClassName("Question-Question");
+			showM(m);
+			setTimeout(function () { self.finishedCallback([[["Sentence (or sentence MD5)", self.sentenceMD5]]]); });
+			}
+		    else{
+			var n = document.getElementsByClassName("newCont-newCont newCont-message");
+			showM(n);    
+			sm.play('sound' + sids[nextSoundToPlayIndex++], { onfinish: fin });
+		    }
+		}
             }
-
             self.finishedCallback = self.options._finishedCallback;
             self.utils = self.options._utils;
 
-            self.timeout = dget(self.options, "timeout", 2000);
+            self.timeout = dget(self.options, "timeout", 10000000);
 
             self.sentenceMD5 = csv_url_encode(self.options.s.html ? self.options.s.html : (self.options.s.audio ? self.options.s.audio+'' : (self.options.s+'')));
-
             self.element.addClass(self.cssPrefix + "flashed-sentence");
             if (self.sentenceDom) {
                 if ($loading) {
@@ -107,7 +128,6 @@ jqueryWidget: {
                 else
                     self.element.append(self.sentenceDom);
             }
-
             if (self.timeout) {
                 self.utils.setTimeout(function() {
                     self.finishedCallback([[["Sentence (or sentence MD5)", self.sentenceMD5]]]);
@@ -121,13 +141,11 @@ jqueryWidget: {
         }
     }
 },
-
 properties: {
     obligatory: ["s"],
     htmlDescription: function (opts) {
-        return $(document.createElement("div")).text(opts.s)[0];
+	return $(document.createElement("div")).text(opts.s)[0];
     }
 }
 });
-
 })();

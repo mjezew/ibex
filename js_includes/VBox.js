@@ -14,6 +14,7 @@ jqueryWidget: {
         this.utilsClass = this.options.options._utilsClass;
         this.callbackWhenChildFinishes = this.options.options._vboxCallbackWhenChildFinishes;
 
+	this.once = dget(this.options, "once", true);
         this.children = this.options.children;
         this.triggers = this.options.triggers;
         this.padding = dget(this.options, "padding", "2em");
@@ -30,6 +31,18 @@ jqueryWidget: {
             assert(tr >= 0 && tr < t.children.length / 2,
                    "Numbers in the 'triggers' array must be indices into the 'children' array starting from 0");
         });
+
+                function hideM(p) {
+        		if ($(document).ready){    
+	                    $(p).hide();
+			}
+                }           
+                function showM(m){  
+                        if ($(document).ready){
+                                ($m).show();
+                        }
+                }  
+
 
         this.indicesAndResultsOfThingsThatHaveFinished = [];
 //        this.childInstances = [];
@@ -89,6 +102,9 @@ jqueryWidget: {
                 // Add the actual child.
                 var ac = ddd ? ddd : (dd ? dd : d);
 
+		var x = document.getElementsByClassName("newCont-newCont newCont-message");	
+		hideM(x);	
+
                 var l = t.childUtils.length - 1;
                 // Get around JavaScript's silly closure capture behavior (deriving
                 // from weird variable scoping rules).
@@ -107,7 +123,18 @@ jqueryWidget: {
             if (addImmediately) {
                 var ac = makeDiv()
                 this.childElements[i/2] = { child: ac, addImmediately: true, removePrevious: false };
-                this.element.append(ac);
+       		this.element.append(ac);
+		console.log("once: "+this.once);
+		if (this.once){
+			var p = document.getElementsByClassName("Message-Message Message-message");
+			console.log(p);
+			this.once = false;
+		}
+		else{
+			this.element.append(ac);
+		}
+		var m = document.getElementsByClassName("Question-Question");
+		hideM(m);
             }
             else {
                 this.childElements[i/2] = { makeDiv: makeDiv, addImmediately: false, removePrevious: removePrevious };

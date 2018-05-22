@@ -1,10 +1,9 @@
-# You may need to add a #! line at the beginning of this file, eg.:
-#     #!/usr/bin/python
+#!/usr/bin/python
 
 #
 # You may need to edit this.
 #
-SERVER_CONF_PY_FILE = "../server_conf.py"
+SERVER_CONF_PY_FILE = "../../cgi-bin/9/server_conf.py"
 
 
 # Copyright (c) 2007, Alex Drummond <a.d.drummond@gmail.com>
@@ -118,6 +117,8 @@ def generate_html(setcounter=None, overview=False):
                    overview and u"&overview=yes" or u"",
                    PY_SCRIPT_NAME)
 
+
+
 command_line_options = None
 try:
     command_line_options, _ = getopt.getopt(sys.argv[1:], "m:p:r:", ["genhtml="])
@@ -148,10 +149,11 @@ import logging
 import getopt
 import itertools
 import StringIO
-if (sys.version.split(' ')[0]) >= '3.0': # No md5 module in Python 3000.
-    import hashlib as md5
-else:
-    import md5
+#if (sys.version.split(' ')[0]) >= '3.0': # No md5 module in Python 3000.
+#    import hashlib as md5
+#else:
+#    import md5
+import hashlib as md5
 import time as time_module
 import types
 import cgi
@@ -1010,7 +1012,7 @@ if CFG.has_key('WEBSPR_WORKING_DIR') and not CFG.has_key('IBEX_WORKING_DIR'):
 logging.basicConfig()
 logger = logging.getLogger("server")
 logger.addHandler(logging.StreamHandler())
-log_filename = os.path.join(CFG.has_key('IBEX_WORKING_DIR') and CFG['IBEX_WORKING_DIR'] or '', 'server.log')
+log_filename = 'server.log'
 try:
     open(log_filename, "w").close();
 except:
@@ -1111,30 +1113,30 @@ def unlock_and_close(f):
 
 def get_counter():
     try:
-        f = lock_and_open(os.path.join(PWD, CFG['SERVER_STATE_DIR'], 'counter'), "r")
+        f = open(os.path.join(PWD, CFG['SERVER_STATE_DIR'], 'counter'), "r")
         n = int(f.read().strip())
-        unlock_and_close(f)
+        f.close
         return n
     except (IOError, ValueError), e:
         logger.error("Error reading counter from server state: %s" % str(e))
         sys.exit(1)
 def set_counter(n):
     try:
-        f = lock_and_open(os.path.join(PWD, CFG['SERVER_STATE_DIR'], 'counter'), "w")
+        f = open(os.path.join(PWD, CFG['SERVER_STATE_DIR'], 'counter'), "w")
         f.write(str(n))
-        unlock_and_close(f)
+        f.close
     except IOError, e:
         logger.error("Error setting counter in server state: %s" % str(e))
         sys.exit(1)
 def update_counter(update_func):
     try:
-        f = lock_and_open(os.path.join(PWD, CFG['SERVER_STATE_DIR'], 'counter'), "r+")
+        f = open(os.path.join(PWD, CFG['SERVER_STATE_DIR'], 'counter'), "r+")
         n = int(f.read().strip())
         newn = update_func(n)
         f.truncate(0)
         f.seek(0)
         f.write(str(newn))
-        unlock_and_close(f)
+        f.close
     except IOError, e:
         logger.error("Error updating counter in server state: %s" % str(e))
         sys.exit(1)
@@ -1174,6 +1176,7 @@ def rearrange(parsed_json, thetime, ip, user_agent):
         counter = int(parsed_json[1])
     except ValueError:
         raise HighLevelParseError()
+
 
     names_array = parsed_json[2]
     def getname(index):
@@ -1260,6 +1263,7 @@ def intersperse_comments(main, name_specs):
         for idx, name_spec in name_specs:
             if idx == i:
                 if len(name_spec) == 1:
+    		    newr.append([u"PARTICIPANT ID: %i" % get_counter()])
                     newr.append([u"# Columns below this comment are as follows:"])
                     newr.append([u"# 1. Time results were received."])
                     newr.append([u"# 2. MD5 hash of participant's IP address."])

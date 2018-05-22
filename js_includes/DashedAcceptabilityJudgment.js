@@ -15,11 +15,13 @@ define_ibex_controller({
         htmlDescription: function (opts) {
             var s = ibex_controller_get_property("DashedSentence", "htmlDescription")(opts);
             var q = ibex_controller_get_property("Question", "htmlDescription")(opts);
+	    var r = ibex_controller_get_property("AcceptabilityJudgment", "htmlDescription")(opts);
             var p =
                 $("<p>")
                 .append($("<p>").append("Q: ").append($(q)))
                 .append("<br>").append($("<b>").text("S:"))
-                .append($(s));
+                .append($(s))
+		.append($(r));
             return p;
         }
     }

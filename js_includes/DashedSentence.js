@@ -306,7 +306,15 @@ jqueryWidget: {
 properties: {
     obligatory: ["s"],
     htmlDescription: function (opts) {
-        return $(document.createElement("div")).text(opts.s);
-    }
+        var s = ibex_controller_get_property("FlashSentence", "htmlDescription")(opts);
+        var q = ibex_controller_get_property("Question", "htmlDescription")(opts);
+        var p =
+                $("<p>")
+                .append($("<p>").append("Q: ").append($(q)))
+                .append("<br>").append($("<b>").text("S:"))
+                .append($(s))
+		.append($("<div>").text(opts.s));
+	return p;  
+  }
 }
 });

@@ -1,63 +1,60 @@
 <div style="width: 40em;">
-<p>
-This experiment has two parts. In the first part, you will be required to read
-a number of English sentences one word at a time. You can advance to the next
-word by pressing the space bar.
-</p>
-<p>
-In the second part, you will be asked to &ldquo;rate&rdquo; some sentences
-on a scale of 1-7 (with 1 bad and 7 good).
-</p>
-<p>
-[Privacy statement, etc., etc.]
-</p>
-
-<table>
+<table cellspacing="10">
 <tr>
-<td colspan="2" style="width: 30em; padding-bottom: 1em;">
-<i>(The form below is just a rough example showing all of the input controls that work properly
-with Ibex. Obviously it would not necessarily be appropriate to collect all of this
-data on subjects.)</i>
+<td align="right">Geburtsjahr:</td><td><input name="age" type="text" size="30" class="obligatory" /></td>
+</tr>
+<tr>
+<td><label class="error" for="age"></label></td>
+</tr>
+<tr>
+  <td align="right">Welches ist Ihre Muttersprache (dominante Muttersprache falls mehr als eine):</td><td><input name="dlang" type="text" size="30" class="obligatory" /></td>
+</tr>
+<tr>
+  <td align="right">Welche andere Sprache(n) sprechen Sie als Muttersprache:</td><td><input name="nlang" type="text" size="30"/></td>
+</tr>
+<tr>
+  <td align="right">Welche andere Sprache(n) sprechen Sie fließend:</td><td><input name="flang" type="text" size="30"/></td>
+</tr>
+<tr>
+  <td align="right">Welche anderen Sprache(n) sprechen Sie einigermaßen:</td><td><input name="blang" type="text" size="30"/></td>
+</tr>
+<tr>
+  <td align="right">In welchem Land sind Sie aufgewachsen:</td><td><input name="country" type="text" size="30" class="obligatory">
 </td>
 </tr>
 <tr>
-  <td>Name:</td><td><input name="name" type="text" size="30" class="obligatory" /></td>
+  <td align="right">In welchem Ort sind Sie aufgewachsen:</td><td><input name="city" type="text" size="30" class="obligatory" /></td>
 </tr>
 <tr>
-<td colspan="2"><label class="error" for="name"></label></td>
+  <td align="right">In welchem Land leben Sie jetzt:</td><td><input name="nCountry" type="text" size="30" class="obligatory">
+</td>
+</tr>
+  <td align="right">An welchem Ort leben Sie jetzt:</td><td><input name="nCity" type="text" size="30" class="obligatory" /></td>
 </tr>
 <tr>
-  <td>Age:</td><td><input name="age" type="text" size="30" class="obligatory" /></td>
-</tr>
-<tr>
-<td colspan="2"><label class="error" for="age"></label></td>
-</tr>
-<tr>
-  <td>Sex:</td><td><input name="sex" type="radio" value="male" class="obligatory" id="csexmale" /><label for="csexmale">Male </label>
-                   <input name="sex" type="radio" value="female" id="csexfemale"/><label for="csexfemale"> Female</label>
-</tr>
-<tr>
-<td colspan="2"><label class="error" for="sex"></label></td>
-</tr>
-<tr>
-<td colspan="2" style="padding-bottom: 1em;"><input type="checkbox" name="credit" id="creditcx" /><label for="creditcx"> I am doing this experiment for credit</label></td>
-</tr>
-<tr>
-<td colspan="2" style="padding-bottom: 1em;"><input type="checkbox" class="obligatory" name="consent" id="consentcx" /><label for="consentcx"> I consent</label></td>
-</tr>
-<tr>
-<td colspan="2">
-<label class="error" for="consent"></label>
+<td align="right">Ich habe schon mal einen Linguistikkurs belegt:</td>
+<td>
+<input type="radio" name="linguist" value="Ja" class="obligatory">Ja
+<input type="radio" name="linguist" value="Nein" class="obligatory">Nein
 </td>
 </tr>
 <tr>
-  <td colspan="2">Write something:</td>
+<td align="right">Ich habe/mache gerade einen Masters/Doktor in Linguistik:</td>
+<td>
+<input type="radio" name="masters" value="Ja" class="obligatory">Ja
+<input type="radio" name="masters" value="Nein" class="obligatory">Nein
+</td>
 </tr>
 <tr>
-  <td colspan="2">
+  <td align="right">Wenn Sie wollen dass wir Ihnen in Zukunft weitere Experimente schicken, geben Sie bitte Ihre Email ein:</td><td><input name="nCity" type="text" size="30"/></td>
+</tr>
+ <tr>
+  <td align="right">Sonstige Anmerkungen:</td>
+  <td>
     <textarea name="write_something" rows="5" cols="40"></textarea>
   </td>
 </tr>
 </table>
 
 </div>
+

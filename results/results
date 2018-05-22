@@ -1,0 +1,80 @@
+#
+# Results on Thursday April 14 2016 20:20:15 UTC.
+# USER AGENT: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.112 Safari/537.36
+# Design number was non-random = 1339
+#
+# The lines below this comment are in groups of 2.
+# The formats of the lines in each of these groups are as follows:
+#
+# Line 1:
+#     Col. 1: Time results were received.
+#     Col. 2: MD5 hash of participant's IP address.
+#     Col. 3: Controller name.
+#     Col. 4: Item number.
+#     Col. 5: Element number.
+#     Col. 6: Type.
+#     Col. 7: Group.
+#     Col. 8: Field name.
+#     Col. 9: Field value.
+# Line 2:
+#     Col. 1: Time results were received.
+#     Col. 2: MD5 hash of participant's IP address.
+#     Col. 3: Controller name.
+#     Col. 4: Item number.
+#     Col. 5: Element number.
+#     Col. 6: Type.
+#     Col. 7: Group.
+#     Col. 8: Sentence (or sentence MD5).
+1460665215,8c1303249e3b705d150e724e181cc653,Form,0,0,__workerid__,NULL,workerid,
+1460665215,8c1303249e3b705d150e724e181cc653,AJ,6,0,0-4,2,How natural did you think the last line was given the context?
+# The lines below this comment are in groups of 2.
+# The formats of the lines in each of these groups are as follows:
+#
+# Line 1:
+#     Col. 1: Time results were received.
+#     Col. 2: MD5 hash of participant's IP address.
+#     Col. 3: Controller name.
+#     Col. 4: Item number.
+#     Col. 5: Element number.
+#     Col. 6: Type.
+#     Col. 7: Group.
+#     Col. 8: Question (NULL if none).
+#     Col. 9: Answer.
+#     Col. 10: Whether or not answer was correct (NULL if N/A).
+#     Col. 11: Time taken to answer.
+# Line 2:
+#     Col. 1: Time results were received.
+#     Col. 2: MD5 hash of participant's IP address.
+#     Col. 3: Controller name.
+#     Col. 4: Item number.
+#     Col. 5: Element number.
+#     Col. 6: Type.
+#     Col. 7: Group.
+#     Col. 8: Sentence (or sentence MD5).
+1460665215,8c1303249e3b705d150e724e181cc653,AJ,6,0,0-4,2,Please select a number,1,NULL,8206
+1460665215,8c1303249e3b705d150e724e181cc653,AJ,17,0,0-3,8,How natural did you think the last line was given the context?
+1460665215,8c1303249e3b705d150e724e181cc653,AJ,17,0,0-3,8,Please select a number,1,NULL,416
+1460665215,8c1303249e3b705d150e724e181cc653,AJ,23,0,0-1,12,How natural did you think the last line was given the context?
+1460665215,8c1303249e3b705d150e724e181cc653,AJ,23,0,0-1,12,Please select a number,1,NULL,426
+1460665215,8c1303249e3b705d150e724e181cc653,AJ,12,0,0-2,6,How natural did you think the last line was given the context?
+1460665215,8c1303249e3b705d150e724e181cc653,AJ,12,0,0-2,6,Please select a number,1,NULL,471
+1460665215,8c1303249e3b705d150e724e181cc653,AJ,22,0,0-4,10,How natural did you think the last line was given the context?
+1460665215,8c1303249e3b705d150e724e181cc653,AJ,22,0,0-4,10,Please select a number,1,NULL,849
+1460665215,8c1303249e3b705d150e724e181cc653,AJ,33,0,0-3,16,How natural did you think the last line was given the context?
+1460665215,8c1303249e3b705d150e724e181cc653,AJ,33,0,0-3,16,Please select a number,1,NULL,907
+1460665215,8c1303249e3b705d150e724e181cc653,AJ,7,0,0-1,4,How natural did you think the last line was given the context?
+1460665215,8c1303249e3b705d150e724e181cc653,AJ,7,0,0-1,4,Please select a number,1,NULL,762
+1460665215,8c1303249e3b705d150e724e181cc653,AJ,28,0,0-2,14,How natural did you think the last line was given the context?
+# Columns below this comment are as follows:
+# 1. Time results were received.
+# 2. MD5 hash of participant's IP address.
+# 3. Controller name.
+# 4. Item number.
+# 5. Element number.
+# 6. Type.
+# 7. Group.
+# 8. Question (NULL if none).
+# 9. Answer.
+# 10. Whether or not answer was correct (NULL if N/A).
+# 11. Time taken to answer.
+1460665215,8c1303249e3b705d150e724e181cc653,AJ,28,0,0-2,14,Please select a number,1,NULL,925

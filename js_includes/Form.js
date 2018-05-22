@@ -11,7 +11,7 @@ jqueryWidget: {
 
         this.html = dget(this.options, "html");
         this.continueOnReturn = dget(this.options, "continueOnReturn", false);
-        this.continueMessage = dget(this.options, "continueMessage", "Click here to continue");
+        this.continueMessage = dget(this.options, "continueMessage", "Next Page");
         this.checkedValue = dget(this.options, "checkedValue", "yes");
         this.uncheckedValue = dget(this.options, "uncheckedValue", "no");
         this.validators = dget(this.options, "validators", { });
@@ -146,11 +146,10 @@ jqueryWidget: {
             }
         });
         var handler = handleClick(dom);
-
         this.element.append(dom);
 
         if (this.continueMessage) {
-            this.element.append($("<p>").append($("<a>").attr('href', '').text("\u2192 " + this.continueMessage)
+            this.element.append($("<p align=\"center\">").append($("<a>").attr('href', '').text("\u2192 " + this.continueMessage)
                                                 .addClass(ibex_controller_name_to_css_prefix("Message") + "continue-link")
                                                 .click(handler)));
         }

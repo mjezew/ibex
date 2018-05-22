@@ -1,4 +1,16 @@
 .error-text {
     color: red;
     font-weight: bold;
+    text-align: right;
+    float: right;
+    margin-left: auto;
+    margin-right: auto; 
+}
+.continueMessage{
+	margin-left: auto;
+	margin-right: auto;
+}
+#continueMessage{
+        margin-left: auto;
+        margin-right: auto;
 }

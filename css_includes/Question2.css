@@ -1,4 +1,4 @@
-.Question {
+.Question2 {
     margin-left: 0;
     padding-left: 0;
 }
@@ -57,17 +57,11 @@ span.fake-link {
 }
 span:hover.fake-link {
     cursor: pointer;
+    text-decoration: underline;
 }
-table.fake-link {
-    color: blue;
-    cursor: pointer;
-    text-align: center;
-    float: center;
-    padding: 0.4em;
-    border: 1px #9ea4b1 solid;
-    margin-top: 1em;
-
+#nextAns0{
+	color: yellow;
 }
-table:hover.fake-link {
-    cursor: pointer;
+#nextAns1{
+	color: green;
 }

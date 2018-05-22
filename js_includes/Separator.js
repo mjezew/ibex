@@ -16,8 +16,37 @@ jqueryWidget: {
         assert(this.style == "normal" || this.style == "error", "'style' property of Separator must either be 'normal' or 'error'");
 
         this.transfer = dget(this.options, "transfer", "keypress");
-        assert(this.transfer == "keypress" || typeof(this.transfer) == "number",
-               "Value of 'transfer' option of Separator must either be the string 'keypress' or a number");
+        assert(this.transfer == "keypress" || this.transfer == "click" || typeof(this.transfer) == "number",
+               "Value of 'transfer' option of Separator must either be the string 'keypress' or 'click'  or a number");
+
+	if (this.transfer == "click") {
+            this.continueMessage = dget(this.options, "continueMessage", "Click here to continue.");
+            this.consentRequired = dget(this.options, "consentRequired", false);
+            this.consentMessage = dget(this.options, "consentMessage", "I have read the above and agree to do the experiment.");
+            this.consentErrorMessage = dget(this.options, "consentErrorMessage", "You must consent before continuing.");
+
+            var t = this;
+            // Get a proper lexical scope for the checkbox element so we can capture it in a closure.
+            // ALEX: Looking at this again, I don't see why it's necessary to create a local scope here
+            // but I am leaving it in as I may be missing something and it won't do any harm.
+            (function (checkbox) {
+                t.element.append(
+                    $(document.createElement("p"))
+                    .css('clear', 'left')
+                        .append($(document.createElement("a"))
+                            .attr('href', '')
+                            .addClass(t.cssPrefix + 'continue-link')
+                            .text("\u2192 " + t.continueMessage)
+                            .click(function () {
+                                if ((! checkbox) || checkbox.attr('checked'))
+                                    t.finishedCallback();
+                                else
+                                    alert(t.consentErrorMessage);
+                                return false;
+                            }))
+                );
+            })(checkbox);
+        }
 
         var normal_message = dget(this.options, "normalMessage", "Press any key to continue.");
         var x = this.utils.getValueFromPreviousElement("normalMessage");
